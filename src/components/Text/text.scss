@@ -1,0 +1,8 @@
+$size: large, larger, medium, small, smaller, x-large, x-small, xx-large,
+  xx-small;
+
+@each $var in $size {
+  .wh-font-size-#{$var} {
+    font-size: $var;
+  }
+}
