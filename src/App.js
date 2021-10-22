@@ -1,10 +1,26 @@
 import './App.scss';
-import Text from './components/Text/Text';
+import Select from './components/select/Select';
 
 function App() {
   return (
     <div className="App">
-      <Text size="xx-large">hello walidosss horchanios</Text>
+      <div style={{ width: '200px', height: '40px' }}>
+        <Select
+          label="colors"
+          onSelect={(option, index) =>
+            alert(
+              `hello you choose a color :${option.label} with indx : ${index}`
+            )
+          }
+          options={[
+            { label: 'red color' },
+            { label: 'green color' },
+            { label: 'yellow color' },
+            { label: 'blue color' },
+          ]}
+          renderOption={() => <p>hello other side !</p>}
+        />
+      </div>
     </div>
   );
 }
