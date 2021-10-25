@@ -1,5 +1,5 @@
 import './App.scss';
-import Select from './components/select/Select';
+import Select from 'components/select/Select';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
         <Select
           label="colors"
           onSelect={(option, index) =>
-            alert(
+            console.log(
               `hello you choose a color :${option.label} with indx : ${index}`
             )
           }

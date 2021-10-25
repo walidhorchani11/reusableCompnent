@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 
 import './select.scss';
 
+const codeKeys = {
+  SPACE: 32,
+  ENTER: 13,
+  DOWN_ARROW: 40,
+}
+
 const Select = ({ options, label, onSelect: handler, renderOption }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [topOverlay, setTopOverlay] = useState(null);
@@ -28,9 +34,19 @@ const Select = ({ options, label, onSelect: handler, renderOption }) => {
     setIndexOption(index);
   };
 
+  const handleKeyDown = (event) => {
+  console.log("🚀 ~ file: Select.jsx ~ line 38 ~ handleKeyDown ~ event", event)
+    event.preventDefault();
+    if(Object.values(codeKeys).includes(event.keyCode)){
+      setIsOpen(true);
+      setIndexOption((prev) => prev === null ? 0 : prev < options.length ? prev + 1 : 0)
+    }
+  }
+
   return (
     <div className="wh--select">
       <button
+        onKeyDown={handleKeyDown}
         aria-haspopup={true}
         aria-expanded={isOpen ? true : undefined}
         aria-controls="wh-select-list"
